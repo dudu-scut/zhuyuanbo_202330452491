@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserOperationLogDao">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.entity.UserOperationLogEntity" id="userOperationLogEntityMap">
+        <result property="operationTime" column="operation_time"/>
+        <result property="operationContent" column="operation_content"/>
+        <result property="ipAddress" column="ip_address"/>
+        <result property="account" column="account"/>
+    </resultMap>
+    <insert id="insertOperationLog">
+        INSERT INTO user_operation_log (operation_content, ip_address, account)
+        VALUES (#{operationContent}, #{ipAddress}, #{account})
+    </insert>
+    <select id="selectListView" resultMap="userOperationLogEntityMap">
+        SELECT * FROM user_operation_log
+    </select>
+</mapper>    

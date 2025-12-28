@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.BrowseRecordDao">
+    <insert id="insert" parameterType="com.entity.BrowseRecord">
+        INSERT INTO browse_record (goods_id, user_id, stay_duration, browse_time)
+        VALUES (#{goodsId}, #{userId}, #{stayDuration}, #{browseTime})
+    </insert>
+    <select id="getProductIdsByUserId" resultType="java.lang.Long">
+        SELECT *
+        FROM browse_record
+        where user_id = ${userId}
+    </select>
+</mapper>    
